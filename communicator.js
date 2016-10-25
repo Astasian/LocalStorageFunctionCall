@@ -37,7 +37,6 @@ function CallLocalStorageFunction(name, params, callback) {
         console.log("Called remote function " + name + "with params: " + params);
     //Check if the function is already called
     if (localStorage.getItem(name) == placeholder && localStorage.getItem(name + "Result") == placeholder) {
-        console.log("Calling")
 
         //Call remote function
         localStorage.setItem(name, params);
