@@ -1,7 +1,5 @@
 let placeholder = "available";
 let resultTimeout = 8000;
-let resultCycleTime = 300;
-let callCycleTime = 1000;
 let debugLF = true;
 
 //Register a function by its name, itself (callback) and the needed time span for the check cycle
