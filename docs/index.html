@@ -4,17 +4,19 @@
         <meta charset="utf-8">
         <title></title>
     </head>
+    <p id="para"> </p>
     <body>
         <div id="myElement"></div>
-        <script src="communicator2.js" charset="utf-8"></script>
+        <script src="../communicator2.js" charset="utf-8"></script>
         <script>
-            RegisterLocalStorageFunction("CallAlert", function(param) {
-                alert(param);
-                return "Success";
+            RegisterLocalStorageFunction("ChangePara", function(param) {
+                var pa = document.getElementById("para");
+                pa.innerHtml = param;
+                return "Changed paragraph to "+param;
             });
             var p = document.getElementById("myElement");
             var a = document.createElement('a');
-            a.setAttribute('href', "mypage.html");
+            a.setAttribute('href', "../mypage.html");
             a.setAttribute('rel', "noreferrer");
             a.setAttribute('target', "_blank");
             p.appendChild(a);
