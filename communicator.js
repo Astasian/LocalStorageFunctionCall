@@ -1,8 +1,8 @@
-"use strict";
-var placeholder = "available";
-var resultTimeout = 8000;
-var resultCycleTime = 300;
-var callCycleTime = 1000;
+let placeholder = "available";
+let resultTimeout = 8000;
+let resultCycleTime = 300;
+let callCycleTime = 1000;
+let debugLF = false;
 
 //Register a function by its name, itself (callback) and the needed time span for the check cycle
 function RegisterLocalStorageFunction(name, callback) {
@@ -10,14 +10,17 @@ function RegisterLocalStorageFunction(name, callback) {
 
     //Set local storage items for function and its result
     resetFunction(name);
-    var i = 0;
+
+    let i = 0;
     //Setting the cycle
     setInterval(function () {
         //Getting the params or eventually just the placeholder
         var params = localStorage.getItem(name);
 
-        console.log("Cycle" + i + " with param " + params);
-        i++;
+        if(debugLF){
+            console.log("Cycle" + i + " with param " + params);
+            i++;
+        }
         //Call the function if params are set and reset all
         if (params != placeholder) {
             var result = callback(params);
@@ -30,7 +33,8 @@ function RegisterLocalStorageFunction(name, callback) {
 }
 
 function CallLocalStorageFunction(name, params, callback) {
-    console.log("Called remote function " + name + "with params: " + params);
+    if(debugLF)
+        console.log("Called remote function " + name + "with params: " + params);
     //Check if the function is already called
     if (localStorage.getItem(name) == placeholder && localStorage.getItem(name + "Result") == placeholder) {
         console.log("Calling")
@@ -40,15 +44,17 @@ function CallLocalStorageFunction(name, params, callback) {
 
         //Define timeout for later usage
         var timeout;
-        var i = 0;
+        let i = 0;
 
         //Check in interval for result
         var checkInterval = setInterval(function () {
             //Get it
             var result = localStorage.getItem(name + "Result");
 
-            console.log("Cycle" + i + " with result " + result);
-            i++;
+            if(debugLF){
+                console.log("Cycle" + i + " with result " + result);
+                i++;
+            }
             //Check wheter the result is set
             if (result != placeholder) {
                 //Call callback with results
