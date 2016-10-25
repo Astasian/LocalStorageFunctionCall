@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <h1>
-            Heading</h1>
-        <p>
-            paragraph.</p>
         <script src="communicator2.js" charset="utf-8"></script>
+      <input type="text" id="newParaInput" value=""/>
         <script>
             function btnClick() {
-                CallLocalStorageFunction("CallAlert", "Hello from the other tab", function(para) {
-                    console.log(para);
+                CallLocalStorageFunction("ChangePara", document.getElementById('newParaInput').value , function(para) {
+                    alert(para);
                 });
             }
         </script>
