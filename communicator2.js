@@ -17,7 +17,7 @@ function RegisterLocalStorageFunction(name, callback) {
 
 		//Call the function if params are set and reset all
 		if (e.key === name && e.newValue != placeholder) {
-			var result = callback(e.newValue);
+			let result = callback(e.newValue);
 			//Set result
 			localStorage.setItem(name + "Result", result);
 			//Reset call
