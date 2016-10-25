@@ -29,7 +29,7 @@ function RegisterLocalStorageFunction(name, callback) {
             //Reset call
             localStorage.setItem(name, placeholder);
         }
-    }, callCycleTime)
+    }, callCycleTime);
 }
 
 function CallLocalStorageFunction(name, params, callback) {
