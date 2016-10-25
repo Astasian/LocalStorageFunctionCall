@@ -14,3 +14,5 @@ Call a function:
 		
 Keep in mind that localStorage just wants strings and no objects. Stringify them before.
 Should work in all browsers which support localStorage.
+
+communicator.js is based on an interval, where communicator2.js is based on the much better 'storage' event listener.
