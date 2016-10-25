@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <script src="communicator2.js" charset="utf-8"></script>
-      <input type="text" id="newParaInput" value=""/>
+        <script src="communicator2.js"></script>
+        <input type="text" id="newParaInput" value="Your paragraph text here"/>
         <script>
             function btnClick() {
-                CallLocalStorageFunction("ChangePara", document.getElementById('newParaInput').value , function(para) {
+                CallLocalStorageFunction("ChangePara", document.getElementById('newParaInput').value, function(para) {
                     alert(para);
                 });
             }
