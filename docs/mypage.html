@@ -4,7 +4,7 @@
         <script src="communicator2.js"></script>
         <input type="text" id="newParaInput" value="Your paragraph text here"/>
         <script>
-            let lsf = new LSFunction();
+            let lsf = new LsFunction();
             function btnClick() {
                 lsf.CallLocalStorageFunction("ChangePara", document.getElementById('newParaInput').value, function(para) {
                     alert(para);
