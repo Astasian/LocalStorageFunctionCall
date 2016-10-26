@@ -1,10 +1,10 @@
 "use strict";
-!function() {
+function LsFunction() {
 	let placeholder = "available";
 	let resultTimeout = 8000;
 
 	//Register a function by its name, itself (callback) and the needed time span for the check cycle
-	window.RegisterLocalStorageFunction = function(name, callback) {
+	this.RegisterLocalStorageFunction = function(name, callback) {
 
 		//Set local storage items for function and its result
 		resetFunction(name);
@@ -24,7 +24,7 @@
 		});
 	}
 
-	window.CallLocalStorageFunction = function(name, params, callback) {
+	this.CallLocalStorageFunction = function(name, params, callback) {
 		//Check if the function is already called
 		if (localStorage.getItem(name) == placeholder && localStorage.getItem(name + "Result") == placeholder) {
 
