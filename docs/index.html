@@ -23,6 +23,12 @@
             a.setAttribute('target', "_blank");
             p.appendChild(a);
             a.click();
+            
+            function btnClick() {
+                lsf.CallLocalStorageFunction("CloseChild", {}, function(){});
+            }
+            
         </script>
+         <button type="button" onclick="btnClick()">Click Me!</button>
     </body>
 </html>
