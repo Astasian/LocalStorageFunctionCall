@@ -9,7 +9,9 @@
         <div id="myElement"></div>
         <script src="communicator2.js" charset="utf-8"></script>
         <script>
-            RegisterLocalStorageFunction("ChangePara", function(param) {
+            let lsf = new LSFunction();
+            
+            lsf.RegisterLocalStorageFunction("ChangePara", function(param) {
                 var pa = document.getElementById("para");
                 pa.innerHTML = param;
                 return "Changed paragraph to "+param;
