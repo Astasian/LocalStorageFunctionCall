@@ -69,4 +69,4 @@ function LsFunction() {
 		localStorage.setItem(name, placeholder);
 		localStorage.setItem(name + "Result", placeholder);
 	}
-}();
+};
