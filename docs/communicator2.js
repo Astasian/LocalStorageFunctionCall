@@ -67,6 +67,7 @@ function LsFunction() {
 				//Dismiss interval
 				clearTimeout(timeout);
 				//Clean up
+				localStorage.setItem(name, placeholder);
 				window.removeEventListener('storage', storageEvent, false);
 			}, resultTimeout);
 		}
