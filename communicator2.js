@@ -8,33 +8,33 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 https://github.com/Astasian/LocalStorageFunctionCall
 */
 !function() {
-	let placeholder = "available";
-	let resultTimeout = 8000;
-
+	let resultTimeout = 500;
+	
 	//Register a function by its name, itself (callback) and the needed time span for the check cycle
 	window.RegisterLocalStorageFunction = function(name, callback) {
-
-		//Set local storage items for function and its result
-		resetFunction(name);
+		
+		//Cleanup first
+		localStorage.removeItem(name);
+		localStorage.removeItem(name+"Result");
 
 		//Setting the event
 		window.addEventListener('storage', function(e) {
 			//Getting the params or eventually just the placeholder
 
 			//Call the function if params are set and reset all
-			if (e.key === name && e.newValue != placeholder) {
+			if (e.key === name) {
 				let result = callback(e.newValue);
 				//Set result
 				localStorage.setItem(name + "Result", result);
 				//Reset call
-				localStorage.setItem(name, placeholder);
+				localStorage.removeItem(name);
 			}
 		});
 	}
 
 	window.CallLocalStorageFunction = function(name, params, callback) {
 		//Check if the function is already called
-		if (localStorage.getItem(name) == placeholder && localStorage.getItem(name + "Result") == placeholder) {
+		if (localStorage.getItem(name) === null && localStorage.getItem(name + "Result") === null) {
 
 			//Call remote function
 			localStorage.setItem(name, params);
@@ -46,12 +46,12 @@ https://github.com/Astasian/LocalStorageFunctionCall
 			//Check in interval for result
 			storageEvent = function(e) {
 				//Check wheter the result is set
-				if (e.key == name + "Result" && e.newValue != placeholder) {
+				if (e.key == name + "Result") {
 					//Call callback with results
 					callback(e.newValue);
 
 					//Reset result in local storage
-					localStorage.setItem(name + "Result", placeholder);
+					localStorage.removeItem(name + "Result");
 
 					//Dismiss listener and timeout
 					clearTimeout(timeout);
@@ -67,14 +67,9 @@ https://github.com/Astasian/LocalStorageFunctionCall
 				//Dismiss interval
 				clearTimeout(timeout);
 				//Clean up
+				localStorage.removeItem(name);
 				window.removeEventListener('storage', storageEvent, false);
 			}, resultTimeout);
 		}
-	}
-
-	//Reset local storage values
-	function resetFunction(name) {
-		localStorage.setItem(name, placeholder);
-		localStorage.setItem(name + "Result", placeholder);
 	}
 }();
