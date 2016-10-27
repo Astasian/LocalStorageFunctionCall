@@ -9,7 +9,7 @@ https://github.com/Astasian/LocalStorageFunctionCall
 */
 function LsFunction() {
 	let placeholder = "available";
-	let resultTimeout = 8000;
+	let resultTimeout = 500;
 
 	//Register a function by its name, itself (callback) and the needed time span for the check cycle
 	this.RegisterLocalStorageFunction = function(name, callback) {
