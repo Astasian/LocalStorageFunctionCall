@@ -8,7 +8,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 https://github.com/Astasian/LocalStorageFunctionCall
 */
 function LsFunction() {
-	let placeholder = "available";
 	let resultTimeout = 500;
 	
 	//Register a function by its name, itself (callback) and the needed time span for the check cycle
