@@ -10,7 +10,8 @@
         <script src="communicator2.js" charset="utf-8"></script>
         <script>
             let lsf = new LsFunction();
-            let winId = Math.random();
+            if(sessionStorage.getItem('winId') === null)
+              sessionStorage.setItem('winId', Math.random());
 
             lsf.RegisterLocalStorageFunction("ChangePara", function(param) {
                 var pa = document.getElementById("para");
@@ -19,14 +20,14 @@
             });
             var p = document.getElementById("myElement");
             var a = document.createElement('a');
-            a.setAttribute('href', "mypage.html#"+winId);
+            a.setAttribute('href', "mypage.html#"+sessionStorage.getItem('winId'));
             a.setAttribute('rel', "noreferrer");
             a.setAttribute('target', "_blank");
             p.appendChild(a);
             a.click();
             
             function btnClick() {
-                lsf.CallLocalStorageFunction("CloseChild", winId, function(){});
+                lsf.CallLocalStorageFunction("CloseChild", sessionStorage.getItem('winId'), function(){});
             }
             
         </script>
