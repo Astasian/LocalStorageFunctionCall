@@ -5,7 +5,7 @@ Copyright (c) 2016 Astasian
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-https://github.com/Astasian/StorageFunctionCall
+https://github.com/Astasian/LocalStorageFunctionCall
 */
 function LsFunction() {
 	let placeholder = "available";
@@ -25,19 +25,19 @@ function LsFunction() {
 			if (e.key === name && e.newValue != placeholder) {
 				let result = callback(e.newValue);
 				//Set result
-				sessionStorage.setItem(name + "Result", result);
+				localStorage.setItem(name + "Result", result);
 				//Reset call
-				sessionStorage.setItem(name, placeholder);
+				localStorage.setItem(name, placeholder);
 			}
 		});
 	}
 
 	this.CallLocalStorageFunction = function(name, params, callback) {
 		//Check if the function is already called
-		if (sessionStorage.getItem(name) == placeholder && sessionStorage.getItem(name + "Result") == placeholder) {
+		if (localStorage.getItem(name) == placeholder && localStorage.getItem(name + "Result") == placeholder) {
 
 			//Call remote function
-			Storage.setItem(name, params);
+			localStorage.setItem(name, params);
 
 			//Define timeout and event for future usage
 			let timeout = {};
@@ -51,7 +51,7 @@ function LsFunction() {
 					callback(e.newValue);
 
 					//Reset result in local storage
-					sessionStorage.setItem(name + "Result", placeholder);
+					localStorage.setItem(name + "Result", placeholder);
 
 					//Dismiss listener and timeout
 					clearTimeout(timeout);
@@ -75,7 +75,7 @@ function LsFunction() {
 
 	//Reset local storage values
 	function resetFunction(name) {
-		sessionStorage.setItem(name, placeholder);
-		sessionStorage.setItem(name + "Result", placeholder);
+		localStorage.setItem(name, placeholder);
+		localStorage.setItem(name + "Result", placeholder);
 	}
 };
