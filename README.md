@@ -21,3 +21,5 @@ Keep in mind that localStorage just wants strings and no objects. Stringify them
 Should work in all browsers which support localStorage.
 
 communicator.js is based on the 'storage' event listener.
+
+[Sample page](https://astasian.github.io/LocalStorageFunctionCall/)
