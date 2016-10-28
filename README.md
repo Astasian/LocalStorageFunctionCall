@@ -11,12 +11,12 @@ Register a function:
 
 Call a function:
 
-	```
+	
 	let str = "testing";
 	CallLocalStorageFunction("test",str,function(para){
 		console.log(para);
 		});
-	```	
+	
 Keep in mind that localStorage just wants strings and no objects. Stringify them before.
 Should work in all browsers which support localStorage.
 
