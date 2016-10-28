@@ -31,7 +31,7 @@ function LsFunction() {
 				finally{
 				//Reset call
 				localStorage.removeItem(name);
-
+				}
 			}
 		});
 	}
