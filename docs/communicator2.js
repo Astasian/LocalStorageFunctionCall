@@ -47,15 +47,15 @@ function LsFunction() {
 			storageEvent = function(e) {
 				//Check wheter the result is set
 				if (e.key == name + "Result") {
-					//Call callback with results
-					callback(e.newValue);
-
 					//Reset result in local storage
 					localStorage.removeItem(name + "Result");
 
 					//Dismiss listener and timeout
 					clearTimeout(timeout);
 					window.removeEventListener('storage', storageEvent, false);
+					
+					//Call callback with results
+					callback(e.newValue);
 				}
 			}
 
