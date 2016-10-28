@@ -28,12 +28,10 @@ function LsFunction() {
 				result = callback(e.newValue);
 				}
 				finally{
-					if(result !== "undefined"){
 				//Set result
 				localStorage.setItem(name + "Result", result);
 				//Reset call
 				localStorage.removeItem(name);
-					}
 				}
 			}
 		});
@@ -53,7 +51,7 @@ function LsFunction() {
 			//Check in interval for result
 			storageEvent = function(e) {
 				//Check wheter the result is set
-				if (e.key == name + "Result") {
+				if (e.key == name + "Result" && e.oldValue === null) {
 					try{
 						//Call callback with results
 						if(callback)
