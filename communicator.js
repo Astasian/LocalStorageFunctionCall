@@ -23,12 +23,13 @@ function LsFunction() {
 
 			//Call the function if params are set and reset all
 			if (e.key === name) {
+				let result;
 				try{
-				let result = callback(e.newValue);
-				//Set result
-				localStorage.setItem(name + "Result", result);
+				result = callback(e.newValue);
 				}
 				finally{
+				//Set result
+				localStorage.setItem(name + "Result", result);
 				//Reset call
 				localStorage.removeItem(name);
 				}
