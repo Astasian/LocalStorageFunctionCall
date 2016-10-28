@@ -7,7 +7,8 @@
             let lsf = new LsFunction();
             let parentId = location.hash.substring(1);
             function btnClick() {
-                lsf.CallLocalStorageFunction("ChangePara", document.getElementById('newParaInput').value, function(para) {
+                mes = {p:  document.getElementById('newParaInput').value, winId = parentId};
+                lsf.CallLocalStorageFunction("ChangePara", JSON.stringify(mes), function(para) {
                     alert(para);
                 });
             }
