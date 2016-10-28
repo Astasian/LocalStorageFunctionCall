@@ -31,7 +31,7 @@ function LsFunction() {
 				finally{
 				//Reset call
 				localStorage.removeItem(name);
-				}
+
 			}
 		});
 	}
@@ -59,6 +59,7 @@ function LsFunction() {
 					window.removeEventListener('storage', storageEvent, false);
 					
 					//Call callback with results
+					if(callback)
 					callback(e.newValue);
 				}
 			}
