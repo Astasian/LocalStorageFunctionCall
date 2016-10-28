@@ -12,9 +12,12 @@
             let lsf = new LsFunction();
             let winId = Math.random();
             lsf.RegisterLocalStorageFunction("ChangePara", function(param) {
-                var pa = document.getElementById("para");
-                pa.innerHTML = param;
-                return "Changed paragraph to "+param;
+                let mes = JSON.parse(param);
+                if(mes.winId == winId){
+                    var pa = document.getElementById("para");
+                    pa.innerHTML = mes.p;
+                    return "Changed paragraph to "+mes.p;
+                }
             });
             var p = document.getElementById("myElement");
             var a = document.createElement('a');
