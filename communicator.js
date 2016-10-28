@@ -28,7 +28,7 @@ function LsFunction() {
 				result = callback(e.newValue);
 				}
 				finally{
-					if(result !== undefined){
+					if(result !== "undefined"){
 				//Set result
 				localStorage.setItem(name + "Result", result);
 				//Reset call
