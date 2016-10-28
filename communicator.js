@@ -51,7 +51,7 @@ function LsFunction() {
 			//Check in interval for result
 			storageEvent = function(e) {
 				//Check wheter the result is set
-				if (e.key == name + "Result" && e.newValue !== "undefined") {
+				if (e.key == name + "Result") {
 					try{
 						//Call callback with results
 						if(callback)
