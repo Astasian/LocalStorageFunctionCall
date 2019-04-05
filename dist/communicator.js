@@ -8,7 +8,6 @@ var LocalStorageCommunicator = (function () {
         this.resetFunction(functionName);
         this.resetResult(functionName);
         window.addEventListener('storage', function (event) {
-            console.log(event);
             if (event.key === functionName) {
                 var params = _this.parseNullableString(event.newValue);
                 var result = func(params);
