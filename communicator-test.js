@@ -1,5 +1,5 @@
 "use strict";
-Window["LocalStorageCommunicator"]  = (function () {
+var LocalStorageCommunicator  = (function () {
     function LocalStorageCommunicator() {
         this.TIMEOUT = 100;
     }
