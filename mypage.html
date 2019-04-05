@@ -9,7 +9,7 @@
             function btnClick() {
                 mes = {p:  document.getElementById('newParaInput').value, winId : parentId, time : Date.now()};
                 lsf.callFunction("ChangePara", mes).then(function(para) {
-                    alert(para);
+                    console.log(para);
                 });
             }
             lsf.registerFunction("CloseChild", function(para){ 
