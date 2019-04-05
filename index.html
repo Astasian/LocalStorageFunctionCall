@@ -11,8 +11,9 @@
     <div id="myElement"></div>
     <script src="communicator-test.js" charset="utf-8"></script>
     <script>
-        window.onload(function () {
-            let lsf = new LocalStorageCommunicator();
+        let lsf;
+        window.onload = function () {
+            lsf = new LocalStorageCommunicator();
             let winId = Math.random();
             lsf.registerFunction("ChangePara", function (param) {
                 let mes = JSON.parse(param);
@@ -29,10 +30,11 @@
             a.setAttribute('target', "_blank");
             p.appendChild(a);
             a.click();
-            function btnClick() {
-                lsf.callFunction("CloseChild", winId);
-            }
-        })
+        }
+
+        function btnClick() {
+            lsf.callFunction("CloseChild", winId);
+        }
     </script>
     <button type="button" onclick="btnClick()">Close child</button>
 </body>
