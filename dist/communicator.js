@@ -16,18 +16,14 @@ var LocalStorageCommunicator = (function () {
             }
         });
     };
-    LocalStorageCommunicator.prototype.callFunction = function (functionName) {
+    LocalStorageCommunicator.prototype.callFunction = function (functionName, param) {
         var _this = this;
-        var params = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            params[_i - 1] = arguments[_i];
-        }
         return new Promise(function (resolve, reject) {
             if (localStorage.getItem(functionName) !== null ||
                 localStorage.getItem(functionName + "Result") !== null) {
                 reject();
             }
-            localStorage.setItem(functionName, JSON.stringify(params));
+            localStorage.setItem(functionName, JSON.stringify(param));
             var timeout;
             var storageEvent = function (event) {
                 if (event.key == functionName + "Result" && event.oldValue === null) {

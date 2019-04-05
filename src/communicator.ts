@@ -31,7 +31,7 @@ class LocalStorageCommunicator {
         });
     }
 
-    public callFunction<T>(functionName: string, ...params: any): Promise<T> {
+    public callFunction<T>(functionName: string, param: any): Promise<T> {
         return new Promise<T>((resolve, reject) => {
 
             //Check if the function is already called
@@ -41,7 +41,7 @@ class LocalStorageCommunicator {
             }
 
             //Call remote function
-            localStorage.setItem(functionName, JSON.stringify(params));
+            localStorage.setItem(functionName, JSON.stringify(param));
 
             //Define timeout and event for future usage
             let timeout: number;
