@@ -6,11 +6,19 @@
         <script>
             let lsf = new LocalStorageCommunicator();
             let parentId = location.hash.substring(1);
-            function btnClick() {
+            function run() {
                 mes = {p:  document.getElementById('newParaInput').value, winId : parentId, time : Date.now()};
                 lsf.callFunction("ChangePara", mes).then(function(para) {
                     console.log(para);
                 });
+            }
+            function btnClick(){
+                run();
+            }
+            function loadTest(){
+                for (let i = 0; i < 1000; i++) {
+                    run();                
+                } 
             }
             lsf.registerFunction("CloseChild", function(para){ 
                 if(para === parentId)
@@ -18,5 +26,6 @@
             })
         </script>
         <button type="button" onclick="btnClick()">Change paragraph</button>
+        <button type="button" onclick="loadTest()">run 1000 times</button>
     </body>
 </html>
