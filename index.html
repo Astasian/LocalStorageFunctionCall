@@ -16,8 +16,8 @@
         function registerStuff() {
             lsf = new LocalStorageCommunicator();
             let winId = Math.random();
-            lsf.registerFunction("ChangePara", function (param) {
-                let mes = JSON.parse(param);
+            lsf.registerFunction("ChangePara", function (mes) {
+                console.log(mes);
                 if (mes.winId == winId) {
                     var pa = document.getElementById("para");
                     pa.innerHTML = mes.p;

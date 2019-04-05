@@ -8,7 +8,7 @@
             let parentId = location.hash.substring(1);
             function btnClick() {
                 mes = {p:  document.getElementById('newParaInput').value, winId : parentId};
-                lsf.callFunction("ChangePara", JSON.stringify(mes), function(para) {
+                lsf.callFunction("ChangePara", mes).then(function(para) {
                     alert(para);
                 });
             }
