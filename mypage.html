@@ -7,7 +7,7 @@
             let lsf = new LocalStorageCommunicator();
             let parentId = location.hash.substring(1);
             function btnClick() {
-                mes = {p:  document.getElementById('newParaInput').value, winId : parentId};
+                mes = {p:  document.getElementById('newParaInput').value, winId : parentId, time : Date.now()};
                 lsf.callFunction("ChangePara", mes).then(function(para) {
                     alert(para);
                 });

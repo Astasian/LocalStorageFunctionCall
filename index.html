@@ -12,12 +12,13 @@
     <script src="./dist/communicator.js" charset="utf-8"></script>
     <script>
         let lsf;
-
+        let winId;
         function registerStuff() {
             lsf = new LocalStorageCommunicator();
-            let winId = Math.random();
+            winId = Math.random();
             lsf.registerFunction("ChangePara", function (mes) {
-                console.log(mes);
+                const diff = Date.now() - mes.time;
+                console.log(mes, diff);
                 if (mes.winId == winId) {
                     var pa = document.getElementById("para");
                     pa.innerHTML = mes.p;
