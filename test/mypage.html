@@ -4,15 +4,15 @@
         <script src="communicator.js"></script>
         <input type="text" id="newParaInput" value="Your paragraph text here"/>
         <script>
-            let lsf = new LsFunction();
+            let lsf = new LocalStorageCommunicator();
             let parentId = location.hash.substring(1);
             function btnClick() {
                 mes = {p:  document.getElementById('newParaInput').value, winId : parentId};
-                lsf.CallLocalStorageFunction("ChangePara", JSON.stringify(mes), function(para) {
+                lsf.callFunction("ChangePara", JSON.stringify(mes), function(para) {
                     alert(para);
                 });
             }
-            lsf.RegisterLocalStorageFunction("CloseChild", function(para){ 
+            lsf.registerFunction("CloseChild", function(para){ 
                 if(para === parentId)
                     window.close(); 
             })

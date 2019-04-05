@@ -9,9 +9,9 @@
         <div id="myElement"></div>
         <script src="communicator.js" charset="utf-8"></script>
         <script>
-            let lsf = new LsFunction();
+            let lsf = new LocalStorageCommunicator();
             let winId = Math.random();
-            lsf.RegisterLocalStorageFunction("ChangePara", function(param) {
+            lsf.registerFunction("ChangePara", function(param) {
                 let mes = JSON.parse(param);
                 if(mes.winId == winId){
                     var pa = document.getElementById("para");
@@ -28,7 +28,7 @@
             a.click();
             
             function btnClick() {
-                lsf.CallLocalStorageFunction("CloseChild", winId);
+                lsf.callFunction("CloseChild", winId);
             }
             
         </script>
