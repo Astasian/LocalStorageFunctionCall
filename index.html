@@ -12,18 +12,17 @@
     <script src="./dist/communicator.js" charset="utf-8"></script>
     <script>
         let lsf;
-        let winId;
+        let children = [];
         function registerStuff() {
             lsf = new LocalStorageCommunicator();
-            winId = Math.random();
+            let winId = Math.random();
+            children.push(winId);
             lsf.registerFunction("ChangePara", function (mes) {
                 const diff = Date.now() - mes.time;
                 console.log(mes, diff);
-                if (mes.winId == winId) {
-                    var pa = document.getElementById("para");
-                    pa.innerHTML = mes.p;
-                    return "Changed paragraph to " + mes.p;
-                }
+                var pa = document.getElementById("para");
+                pa.innerHTML += mes.p + " from " + mes.winId;
+                return "Changed paragraph to " + mes.p;
             });
             var p = document.getElementById("myElement");
             var a = document.createElement('a');
@@ -35,7 +34,11 @@
         }
         window.addEventListener('load', registerStuff);
         function btnClick() {
-            lsf.callFunction("CloseChild", winId);
+            // not working
+            for (let i = 0; i < children.length; i++) {
+                const element = children[i];
+                lsf.callFunction("CloseChild", element);
+            }
         }
     </script>
     <button type="button" onclick="btnClick()">Close child</button>
