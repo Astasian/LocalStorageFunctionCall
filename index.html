@@ -12,7 +12,8 @@
     <script src="communicator-test.js" charset="utf-8"></script>
     <script>
         let lsf;
-        window.onload = function () {
+
+        function registerStuff() {
             lsf = new LocalStorageCommunicator();
             let winId = Math.random();
             lsf.registerFunction("ChangePara", function (param) {
@@ -31,7 +32,7 @@
             p.appendChild(a);
             a.click();
         }
-
+        window.addEventListener('load', registerStuff);
         function btnClick() {
             lsf.callFunction("CloseChild", winId);
         }
