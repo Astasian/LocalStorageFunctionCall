@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
-        <p id="para"> </p>
-        <div id="myElement"></div>
-        <script src="communicator-test.js" charset="utf-8"></script>
-        <script>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <p id="para"> </p>
+    <div id="myElement"></div>
+    <script src="communicator-test.js" charset="utf-8"></script>
+    <script>
+        window.onload(function () {
             let lsf = new LocalStorageCommunicator();
             let winId = Math.random();
-            lsf.registerFunction("ChangePara", function(param) {
+            lsf.registerFunction("ChangePara", function (param) {
                 let mes = JSON.parse(param);
-                if(mes.winId == winId){
+                if (mes.winId == winId) {
                     var pa = document.getElementById("para");
                     pa.innerHTML = mes.p;
-                    return "Changed paragraph to "+mes.p;
+                    return "Changed paragraph to " + mes.p;
                 }
             });
             var p = document.getElementById("myElement");
             var a = document.createElement('a');
-            a.setAttribute('href', "mypage.html#"+winId);
+            a.setAttribute('href', "mypage.html#" + winId);
             a.setAttribute('rel', "noreferrer");
             a.setAttribute('target', "_blank");
             p.appendChild(a);
             a.click();
-            
             function btnClick() {
                 lsf.callFunction("CloseChild", winId);
             }
-            
-        </script>
-         <button type="button" onclick="btnClick()">Close child</button>
-    </body>
+        })
+    </script>
+    <button type="button" onclick="btnClick()">Close child</button>
+</body>
+
 </html>
