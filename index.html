@@ -18,8 +18,9 @@
             let winId = Math.random();
             children.push(winId);
             lsf.registerFunction("ChangePara", function (mes) {
-                const diff = Date.now() - mes.time;
-                console.log(mes, diff);
+                const now = Date.now();
+                const diff = now - mes.time;
+                console.log(mes, diff, now);
                 var pa = document.getElementById("para");
                 pa.innerHTML += mes.p + " from " + mes.winId;
                 return "Changed paragraph to " + mes.p;
